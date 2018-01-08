@@ -1,0 +1,16 @@
+server:
+  port: 8020
+
+spring:
+  zipkin:
+    baseUrl: http://${ZIPKIN_SERVER_USERNAME:zipkin}:${ZIPKIN_SERVER_PASSWORD:password}@zipkin/
+    locator:
+      discovery:
+        enabled: true
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+logging:
+  level:
+    root: debug

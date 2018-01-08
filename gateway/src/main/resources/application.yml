@@ -1,0 +1,24 @@
+server:
+  port: 8080
+
+spring:
+  zipkin:
+    baseUrl: http://${ZIPKIN_SERVER_USERNAME:zipkin}:${ZIPKIN_SERVER_PASSWORD:password}@zipkin/
+    locator:
+      discovery:
+        enabled: true
+  sleuth:
+    sampler:
+      percentage: 1.0
+
+zuul:
+  ignoredServices: '*'
+  routes:
+    test:
+      path: /service/**
+      serviceId: service
+      stripPrefix: true
+
+logging:
+  level:
+    root: debug
